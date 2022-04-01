@@ -18,8 +18,8 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
 public class SnowalkerShardingjdbcDemoApplicationTests {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SnowalkerShardingjdbcDemoApplicationTests.class);
@@ -29,7 +29,7 @@ public class SnowalkerShardingjdbcDemoApplicationTests {
     @Autowired
     KeyGenerator keyGenerator;
 
-    @Test
+    //@Test
     public void testInsertOrderInfo() {
         for (int i = 1; i < 10; i++) {
             long userId = i;
@@ -52,7 +52,7 @@ public class SnowalkerShardingjdbcDemoApplicationTests {
     /**
      * 默认规则跨片归并
      */
-    @Test
+    //@Test
     public void testQueryList() {
         List<OrderInfo> list = new ArrayList<>();
         OrderInfo orderInfo = new OrderInfo();
@@ -63,7 +63,7 @@ public class SnowalkerShardingjdbcDemoApplicationTests {
     }
 
 
-    @Test
+    //@Test
     public void testQueryById() {
         OrderInfo queryParam = new OrderInfo();
         queryParam.setUserId(8l);
@@ -81,7 +81,7 @@ public class SnowalkerShardingjdbcDemoApplicationTests {
     /**
      * 测试分布式主键生成
      */
-    @Test
+    //@Test
     public void testGenerateId() {
         // 支付宝或者微信uid
         String outId = "1232132131241241243123";
@@ -99,7 +99,7 @@ public class SnowalkerShardingjdbcDemoApplicationTests {
     /**
      * 测试新的订单入库
      */
-    @Test
+    //@Test
     public void testNewOrderInsert() {
         // 支付宝或者微信uid
         for (int i = 0; i < 1; i++) {
@@ -121,7 +121,7 @@ public class SnowalkerShardingjdbcDemoApplicationTests {
     /**
      * 测试订单明细查询
      */
-    @Test
+    //@Test
     public void testQueryNewOrderById() {
         String orderId = "OD010001011903261549424993200011";
         String userId = "UD030001011903261549424973200007";
@@ -134,7 +134,7 @@ public class SnowalkerShardingjdbcDemoApplicationTests {
     /**
      * 测试订单列表查询
      */
-    @Test
+    //@Test
     public void testQueryNewOrderList() {
         String userId = "UD030001011903261549424973200007";
         OrderNewInfoEntity orderInfo = new OrderNewInfoEntity();
