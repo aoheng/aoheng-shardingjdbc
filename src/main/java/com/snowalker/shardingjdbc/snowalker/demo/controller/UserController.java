@@ -37,7 +37,7 @@ public class UserController {
 
     @ApiOperation("新增用户")
     @PostMapping()
-    public ApiResult addUser(@RequestBody UserModel model) {
+    public ApiResult<Integer> addUser(@RequestBody UserModel model) {
         return ApiResult.ok(userService.addUserInfo(model));
     }
 
