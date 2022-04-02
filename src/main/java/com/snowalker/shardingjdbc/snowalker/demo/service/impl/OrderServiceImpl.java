@@ -1,7 +1,8 @@
-package com.snowalker.shardingjdbc.snowalker.demo.service;
+package com.snowalker.shardingjdbc.snowalker.demo.service.impl;
 
 import com.snowalker.shardingjdbc.snowalker.demo.entity.OrderInfo;
 import com.snowalker.shardingjdbc.snowalker.demo.mapper.OrderMapper;
+import com.snowalker.shardingjdbc.snowalker.demo.service.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,13 @@ import java.util.List;
  * @className
  * @desc
  */
-@Service(value = "orderService")
+@Service
 public class OrderServiceImpl implements OrderService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderServiceImpl.class);
 
 
-   private final OrderMapper orderMapper;
+    private final OrderMapper orderMapper;
 
     @Autowired
     public OrderServiceImpl(OrderMapper orderMapper) {

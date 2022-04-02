@@ -1,11 +1,13 @@
 package com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.mapper;
 
+import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity.UserInfoEntity;
+import org.apache.ibatis.annotations.Mapper;
+
 /**
- * @author snowalker
- * @version 1.0
- * @date 2019/3/23 10:52
- * @className UserMapper
- * @desc 用户Mapper
+ * @description: 用户UserMapper
+ * @author: Aoheng
+ * @date: 2022/4/2 15:08
  */
-public interface UserMapper {
+@Mapper
+public interface UserMapper extends BaseMapper<UserInfoEntity> {
 }

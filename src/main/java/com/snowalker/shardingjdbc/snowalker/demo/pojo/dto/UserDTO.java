@@ -1,16 +1,16 @@
-package com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity;
+package com.snowalker.shardingjdbc.snowalker.demo.pojo.dto;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
- * @author snowalker
- * @version 1.0
- * @date 2019/3/23 10:48
- * @className UserInfoEntity
- * @desc 用户实体
+ * @description: 用户DTO
+ * @author: Aoheng
+ * @date: 2022/4/2 15:15
  */
 @Data
-public class UserInfoEntity {
+public class UserDTO implements Serializable {
 
     /**
      * 主键id
@@ -26,6 +26,7 @@ public class UserInfoEntity {
      * 用户名称
      */
     private String userName;
+
     /**
      * 外部关联Id
      */
