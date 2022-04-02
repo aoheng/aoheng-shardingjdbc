@@ -1,6 +1,7 @@
 package com.snowalker.shardingjdbc.snowalker.demo.pojo.query;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
@@ -10,6 +11,7 @@ import java.io.Serializable;
  * @date: 2022/4/2 16:02
  */
 @Data
+@Accessors(chain = true)
 public class UserQuery implements Serializable {
 
     /**

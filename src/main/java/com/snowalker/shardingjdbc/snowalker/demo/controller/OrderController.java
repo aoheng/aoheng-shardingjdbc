@@ -36,7 +36,7 @@ public class OrderController {
 
     @GetMapping("/queryOrderInfoByOrderId")
     public OrderInfo queryOrderInfoByOrderId(OrderInfo orderInfo) {
-        OrderInfo info= orderService.queryOrderInfoByOrderId(orderInfo);
+        OrderInfo info = orderService.queryOrderInfoByOrderId(orderInfo);
         return info;
     }
 
@@ -45,9 +45,6 @@ public class OrderController {
     public int addOrder(OrderInfo orderInfo) {
         return orderService.addOrder(orderInfo);
     }
-
-
-
 
 
 }
