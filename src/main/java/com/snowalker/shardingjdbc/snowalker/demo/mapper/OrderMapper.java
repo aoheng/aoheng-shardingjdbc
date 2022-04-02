@@ -1,6 +1,7 @@
 package com.snowalker.shardingjdbc.snowalker.demo.mapper;
 
 import com.snowalker.shardingjdbc.snowalker.demo.entity.OrderInfo;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @className OrderMapper
  * @desc
  */
+@Mapper
 public interface OrderMapper {
 
     List<OrderInfo> queryOrderInfoList(OrderInfo orderInfo);

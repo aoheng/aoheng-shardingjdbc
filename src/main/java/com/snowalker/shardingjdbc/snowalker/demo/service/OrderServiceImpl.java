@@ -21,8 +21,13 @@ public class OrderServiceImpl implements OrderService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderServiceImpl.class);
 
+
+   private final OrderMapper orderMapper;
+
     @Autowired
-    OrderMapper orderMapper;
+    public OrderServiceImpl(OrderMapper orderMapper) {
+        this.orderMapper = orderMapper;
+    }
 
     @Override
     public List<OrderInfo> queryOrderInfoList(OrderInfo orderInfo) {
