@@ -1,10 +1,10 @@
 package com.snowalker.shardingjdbc.snowalker.demo;
 
 import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.constant.DbAndTableEnum;
+import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity.OrderInfo;
 import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity.OrderNewInfoEntity;
 import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.sequence.KeyGenerator;
 import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.service.OrderNewSerivce;
-import com.snowalker.shardingjdbc.snowalker.demo.entity.OrderInfo;
 import com.snowalker.shardingjdbc.snowalker.demo.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

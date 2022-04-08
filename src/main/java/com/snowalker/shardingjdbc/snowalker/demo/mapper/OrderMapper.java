@@ -1,6 +1,7 @@
 package com.snowalker.shardingjdbc.snowalker.demo.mapper;
 
-import com.snowalker.shardingjdbc.snowalker.demo.entity.OrderInfo;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity.OrderInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  * @desc
  */
 @Mapper
-public interface OrderMapper {
+public interface OrderMapper extends BaseMapper<OrderInfo> {
 
     List<OrderInfo> queryOrderInfoList(OrderInfo orderInfo);
 

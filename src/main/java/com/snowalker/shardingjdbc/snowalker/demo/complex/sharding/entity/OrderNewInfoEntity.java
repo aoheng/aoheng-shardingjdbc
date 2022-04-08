@@ -1,62 +1,22 @@
 package com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity;
 
-/**
- * @author snowalker
- * @version 1.0
- * @date 2019/3/23 10:50
- * @className OrderNewInfoEntity
- * @desc 复合分片订单实体
- */
-public class OrderNewInfoEntity {
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
-    private Integer id;
+import java.io.Serializable;
+
+/**
+ * @description: 复合分片订单实体
+ * @author: Aoheng
+ * @date: 2022/4/2 15:15
+ */
+@Data
+@TableName("t_new_order")
+public class OrderNewInfoEntity implements Serializable {
+
+    private Long id;
     private String userId;
     private String orderId;
     private String userName;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public OrderNewInfoEntity setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public OrderNewInfoEntity setUserId(String userId) {
-        this.userId = userId;
-        return this;
-    }
-
-    public String getOrderId() {
-        return orderId;
-    }
-
-    public OrderNewInfoEntity setOrderId(String orderId) {
-        this.orderId = orderId;
-        return this;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public OrderNewInfoEntity setUserName(String userName) {
-        this.userName = userName;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderNewInfoEntity{" +
-                "id=" + id +
-                ", userId='" + userId + '\'' +
-                ", orderId='" + orderId + '\'' +
-                ", userName='" + userName + '\'' +
-                '}';
-    }
 }

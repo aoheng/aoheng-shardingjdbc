@@ -1,6 +1,6 @@
 package com.snowalker.shardingjdbc.snowalker.demo.service;
 
-import com.snowalker.shardingjdbc.snowalker.demo.entity.OrderInfo;
+import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity.OrderInfo;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.snowalker.shardingjdbc.snowalker.demo.controller;
 
-import com.snowalker.shardingjdbc.snowalker.demo.entity.OrderInfo;
+import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity.OrderInfo;
 import com.snowalker.shardingjdbc.snowalker.demo.service.OrderService;
 import groovy.util.logging.Slf4j;
 import io.swagger.annotations.Api;

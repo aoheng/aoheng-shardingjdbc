@@ -1,5 +1,6 @@
-package com.snowalker.shardingjdbc.snowalker.demo.entity;
+package com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -10,6 +11,7 @@ import java.io.Serializable;
  * @date: 2022/4/2 15:15
  */
 @Data
+@TableName("t_order")
 public class OrderInfo implements Serializable {
 
     private Long id;

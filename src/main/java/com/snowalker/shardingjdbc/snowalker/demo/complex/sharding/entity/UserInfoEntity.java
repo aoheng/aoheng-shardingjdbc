@@ -3,6 +3,8 @@ package com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @author snowalker
  * @version 1.0
@@ -12,7 +14,7 @@ import lombok.Data;
  */
 @Data
 @TableName("t_user")
-public class UserInfoEntity {
+public class UserInfoEntity implements Serializable {
 
     /**
      * 主键id
