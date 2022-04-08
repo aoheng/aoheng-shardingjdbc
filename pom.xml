@@ -110,17 +110,11 @@
             <version>${spring-boot-starter-redis}</version>
         </dependency>
 
-        <!--<dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper</artifactId>
-            <version>${tk.version}</version>
-        </dependency>-->
-
         <!--Mybatis-Plus-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.1.1</version>
+            <version>3.3.2</version>
         </dependency>
 
         <!-- swagger -->

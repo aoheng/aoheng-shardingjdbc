@@ -1,7 +1,10 @@
 package com.snowalker.shardingjdbc.snowalker.demo.controller;
 
+import com.snowalker.shardingjdbc.snowalker.demo.common.api.ApiPageResult;
 import com.snowalker.shardingjdbc.snowalker.demo.common.api.ApiResult;
+import com.snowalker.shardingjdbc.snowalker.demo.common.page.Pagination;
 import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity.OrderInfo;
+import com.snowalker.shardingjdbc.snowalker.demo.pojo.query.OrderQuery;
 import com.snowalker.shardingjdbc.snowalker.demo.service.OrderService;
 import groovy.util.logging.Slf4j;
 import io.swagger.annotations.Api;
@@ -31,6 +34,12 @@ public class OrderController {
     @GetMapping("/queryOrderInfoList")
     public ApiResult<List<OrderInfo>> queryOrderInfoList(OrderInfo orderInfo) {
         return ApiResult.ok(orderService.queryOrderInfoList(orderInfo));
+    }
+
+    @ApiOperation("订单分页列表")
+    @GetMapping("/page")
+    public ApiPageResult<OrderInfo> page(OrderQuery orderInfo, Pagination pagination) {
+        return orderService.page(orderInfo, pagination);
     }
 
     @GetMapping("/queryOrderInfoByOrderId")

@@ -1,6 +1,9 @@
 package com.snowalker.shardingjdbc.snowalker.demo.service;
 
+import com.snowalker.shardingjdbc.snowalker.demo.common.api.ApiPageResult;
+import com.snowalker.shardingjdbc.snowalker.demo.common.page.Pagination;
 import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity.OrderInfo;
+import com.snowalker.shardingjdbc.snowalker.demo.pojo.query.OrderQuery;
 
 import java.util.List;
 
@@ -18,4 +21,6 @@ public interface OrderService {
     OrderInfo queryOrderInfoByOrderId(OrderInfo orderInfo);
 
     int addOrder(OrderInfo orderInfo);
+
+    ApiPageResult<OrderInfo> page(OrderQuery orderInfo, Pagination pagination);
 }
