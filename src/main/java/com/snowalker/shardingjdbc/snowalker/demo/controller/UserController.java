@@ -8,7 +8,6 @@ import com.snowalker.shardingjdbc.snowalker.demo.service.UserService;
 import groovy.util.logging.Slf4j;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,9 +47,9 @@ public class UserController {
     }
 
     @ApiOperation("获取用户信息")
-    @GetMapping(value = "/{id}")
-    public ApiResult<UserVO> getById(@NonNull @PathVariable Integer id) {
-        return ApiResult.ok(userService.getUserInfo(new UserQuery().setId(id)));
+    @GetMapping(value = "/userId")
+    public ApiResult<UserVO> getByUserId(@RequestParam String userId) {
+        return ApiResult.ok(userService.getUserInfo(new UserQuery().setUserId(userId)));
     }
 
     @ApiOperation("list列表")

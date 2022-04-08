@@ -1,5 +1,6 @@
 package com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity.UserInfoEntity;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -10,4 +11,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserMapper extends BaseMapper<UserInfoEntity> {
+
+    int addUser(UserInfoEntity userInfo);
+
 }

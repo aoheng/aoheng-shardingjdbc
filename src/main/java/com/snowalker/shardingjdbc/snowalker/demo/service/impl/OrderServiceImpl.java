@@ -3,8 +3,7 @@ package com.snowalker.shardingjdbc.snowalker.demo.service.impl;
 import com.snowalker.shardingjdbc.snowalker.demo.entity.OrderInfo;
 import com.snowalker.shardingjdbc.snowalker.demo.mapper.OrderMapper;
 import com.snowalker.shardingjdbc.snowalker.demo.service.OrderService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +16,9 @@ import java.util.List;
  * @className
  * @desc
  */
+@Slf4j
 @Service
 public class OrderServiceImpl implements OrderService {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(OrderServiceImpl.class);
 
 
     private final OrderMapper orderMapper;
@@ -42,7 +40,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public int addOrder(OrderInfo orderInfo) {
-        LOGGER.info("订单入库开始，orderinfo={}", orderInfo.toString());
+        log.info("订单入库开始，orderinfo={}", orderInfo.toString());
         return orderMapper.addOrder(orderInfo);
     }
 }

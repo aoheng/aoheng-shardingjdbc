@@ -1,5 +1,6 @@
 package com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
@@ -10,6 +11,7 @@ import lombok.Data;
  * @desc 用户实体
  */
 @Data
+@TableName("t_user")
 public class UserInfoEntity {
 
     /**

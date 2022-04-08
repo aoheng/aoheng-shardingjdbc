@@ -6,13 +6,8 @@ import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.sequence.KeyGe
 import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.service.OrderNewSerivce;
 import com.snowalker.shardingjdbc.snowalker.demo.entity.OrderInfo;
 import com.snowalker.shardingjdbc.snowalker.demo.service.OrderService;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -20,9 +15,9 @@ import java.util.List;
 
 //@RunWith(SpringRunner.class)
 //@SpringBootTest
+@Slf4j
 public class SnowalkerShardingjdbcDemoApplicationTests {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SnowalkerShardingjdbcDemoApplicationTests.class);
 
     @Resource(name = "orderService")
     OrderService orderService;
@@ -34,17 +29,17 @@ public class SnowalkerShardingjdbcDemoApplicationTests {
         for (int i = 1; i < 10; i++) {
             long userId = i;
             //long orderId = KeyGenerator.generateKey(DbAndTableEnum.T_USER,"2");
-            long orderId =KeyGenerator.getSnowFlakeId();
+            long orderId = KeyGenerator.getSnowFlakeId();
             //long orderId = 4*i + 1;
             OrderInfo orderInfo = new OrderInfo();
-            orderInfo.setUserName("aoheng"+i);
+            orderInfo.setUserName("aoheng" + i);
             orderInfo.setUserId(userId);
             orderInfo.setOrderId(orderId);
             int result = orderService.addOrder(orderInfo);
             if (1 == result) {
-                LOGGER.info("入库成功,orderInfo={}", orderInfo);
+                log.info("入库成功,orderInfo={}", orderInfo);
             } else {
-                LOGGER.info("入库失败,orderInfo={}", orderInfo);
+                log.info("入库失败,orderInfo={}", orderInfo);
             }
         }
     }
@@ -59,7 +54,7 @@ public class SnowalkerShardingjdbcDemoApplicationTests {
         orderInfo.setOrderId(2l);
         orderInfo.setUserId(2l);
         list = orderService.queryOrderInfoList(orderInfo);
-        LOGGER.info("查询结果:{}",list.toString());
+        log.info("查询结果:{}", list.toString());
     }
 
 
@@ -70,12 +65,11 @@ public class SnowalkerShardingjdbcDemoApplicationTests {
         queryParam.setOrderId(8l);
         OrderInfo queryResult = orderService.queryOrderInfoByOrderId(queryParam);
         if (queryResult != null) {
-            LOGGER.info("查询结果:orderInfo={}", queryResult);
+            log.info("查询结果:orderInfo={}", queryResult);
         } else {
-            LOGGER.info("查无此记录");
+            log.info("查无此记录");
         }
     }
-
 
 
     /**
@@ -85,11 +79,11 @@ public class SnowalkerShardingjdbcDemoApplicationTests {
     public void testGenerateId() {
         // 支付宝或者微信uid
         String outId = "1232132131241241243123";
-        LOGGER.info("获取id开始");
+        log.info("获取id开始");
         String innerUserId = keyGenerator.generateKey(DbAndTableEnum.T_USER, outId);
-        LOGGER.info("外部id={},innerUserId={}", outId, innerUserId);
+        log.info("外部id={},innerUserId={}", outId, innerUserId);
         String orderId = keyGenerator.generateKey(DbAndTableEnum.T_NEW_ORDER, innerUserId);
-        LOGGER.info("外部id={},innerUserId={},orderId={}", outId, innerUserId, orderId);
+        log.info("外部id={},innerUserId={},orderId={}", outId, innerUserId, orderId);
     }
 
 
@@ -104,11 +98,11 @@ public class SnowalkerShardingjdbcDemoApplicationTests {
         // 支付宝或者微信uid
         for (int i = 0; i < 1; i++) {
             String outId = "1232132131241241243126" + i;
-            LOGGER.info("获取id开始");
+            log.info("获取id开始");
             String innerUserId = keyGenerator.generateKey(DbAndTableEnum.T_USER, outId);
-            LOGGER.info("外部id={},内部用户={}", outId, innerUserId);
+            log.info("外部id={},内部用户={}", outId, innerUserId);
             String orderId = keyGenerator.generateKey(DbAndTableEnum.T_NEW_ORDER, innerUserId);
-            LOGGER.info("外部id={},内部用户={},订单={}", outId, innerUserId, orderId);
+            log.info("外部id={},内部用户={},订单={}", outId, innerUserId, orderId);
             OrderNewInfoEntity orderInfo = new OrderNewInfoEntity();
             orderInfo.setUserName("snowalker");
             orderInfo.setUserId(innerUserId);
