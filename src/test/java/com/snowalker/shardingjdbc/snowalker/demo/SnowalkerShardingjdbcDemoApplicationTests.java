@@ -5,6 +5,7 @@ import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity.OrderIn
 import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity.OrderNewInfoEntity;
 import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.sequence.KeyGenerator;
 import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.service.OrderNewSerivce;
+import com.snowalker.shardingjdbc.snowalker.demo.pojo.query.NewOrderQuery;
 import com.snowalker.shardingjdbc.snowalker.demo.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -119,7 +120,7 @@ public class SnowalkerShardingjdbcDemoApplicationTests {
     public void testQueryNewOrderById() {
         String orderId = "OD010001011903261549424993200011";
         String userId = "UD030001011903261549424973200007";
-        OrderNewInfoEntity orderInfo = new OrderNewInfoEntity();
+        NewOrderQuery orderInfo = new NewOrderQuery();
         orderInfo.setOrderId(orderId);
         orderInfo.setUserId(userId);
         System.out.println(orderNewSerivce.queryOrderInfoByOrderId(orderInfo));
@@ -131,10 +132,9 @@ public class SnowalkerShardingjdbcDemoApplicationTests {
     //@Test
     public void testQueryNewOrderList() {
         String userId = "UD030001011903261549424973200007";
-        OrderNewInfoEntity orderInfo = new OrderNewInfoEntity();
+        NewOrderQuery orderInfo = new NewOrderQuery();
         orderInfo.setUserId(userId);
-        List<OrderNewInfoEntity> list = new ArrayList<>();
-        list = orderNewSerivce.queryOrderInfoList(orderInfo);
+        List<OrderNewInfoEntity> list = orderNewSerivce.queryOrderInfoByOrderId(orderInfo);
         System.out.println(list);
     }
 }

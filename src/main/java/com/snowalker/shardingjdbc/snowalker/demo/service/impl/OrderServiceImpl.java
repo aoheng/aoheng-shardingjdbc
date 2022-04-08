@@ -47,7 +47,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public int addOrder(OrderInfo orderInfo) {
         orderInfo.setOrderId(KeyGenerator.getSnowFlakeId());
-        log.info("订单入库开始，orderinfo={}", orderInfo.toString());
+        log.info("订单入库开始，orderinfo={}", orderInfo);
         return orderMapper.insert(orderInfo);
     }
 
