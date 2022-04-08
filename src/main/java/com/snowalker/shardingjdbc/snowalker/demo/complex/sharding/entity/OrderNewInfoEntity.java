@@ -14,9 +14,21 @@ import java.io.Serializable;
 @TableName("t_new_order")
 public class OrderNewInfoEntity implements Serializable {
 
+    /**
+     * 主键id
+     */
     private Long id;
+    /**
+     * 用户id
+     */
     private String userId;
+    /**
+     * 订单id
+     */
     private String orderId;
+    /**
+     * 用户名称
+     */
     private String userName;
 
 }
