@@ -2,6 +2,7 @@ package com.snowalker.shardingjdbc.snowalker.demo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity.OrderInfo;
+import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.sequence.KeyGenerator;
 import com.snowalker.shardingjdbc.snowalker.demo.mapper.OrderMapper;
 import com.snowalker.shardingjdbc.snowalker.demo.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
@@ -41,6 +42,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public int addOrder(OrderInfo orderInfo) {
+        orderInfo.setOrderId(KeyGenerator.getSnowFlakeId());
         log.info("订单入库开始，orderinfo={}", orderInfo.toString());
         return orderMapper.insert(orderInfo);
     }

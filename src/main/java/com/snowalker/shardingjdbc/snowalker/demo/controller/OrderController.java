@@ -1,13 +1,12 @@
 package com.snowalker.shardingjdbc.snowalker.demo.controller;
 
+import com.snowalker.shardingjdbc.snowalker.demo.common.api.ApiResult;
 import com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.entity.OrderInfo;
 import com.snowalker.shardingjdbc.snowalker.demo.service.OrderService;
 import groovy.util.logging.Slf4j;
 import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,20 +29,20 @@ public class OrderController {
 
 
     @GetMapping("/queryOrderInfoList")
-    public List<OrderInfo> queryOrderInfoList(OrderInfo orderInfo) {
-        return orderService.queryOrderInfoList(orderInfo);
+    public ApiResult<List<OrderInfo>> queryOrderInfoList(OrderInfo orderInfo) {
+        return ApiResult.ok(orderService.queryOrderInfoList(orderInfo));
     }
 
     @GetMapping("/queryOrderInfoByOrderId")
-    public OrderInfo queryOrderInfoByOrderId(OrderInfo orderInfo) {
-        OrderInfo info = orderService.queryOrderInfoByOrderId(orderInfo);
-        return info;
+    public ApiResult<OrderInfo> queryOrderInfoByOrderId(OrderInfo orderInfo) {
+        return ApiResult.ok(orderService.queryOrderInfoByOrderId(orderInfo));
     }
 
 
+    @ApiOperation("新增订单")
     @PostMapping("/addOrder")
-    public int addOrder(OrderInfo orderInfo) {
-        return orderService.addOrder(orderInfo);
+    public ApiResult<Integer> addOrder(@RequestBody OrderInfo orderInfo) {
+        return ApiResult.ok(orderService.addOrder(orderInfo));
     }
 
 
