@@ -1,12 +1,14 @@
 # aoheng-shardingjdbc
 
-参考snowalker-shardingjdbc分库分表实战
+- 参考snowalker-shardingjdbc分库分表实战
 
-分片规则：user_id,order_id
+- 复合分片规则：user_id,order_id
 
-分片策略：复合分片策略-ComplexKeysShardingAlgorithm
+- 分片策略：复合分片策略-ComplexKeysShardingAlgorithm
 
-整合mybatis-plus
+- 整合mybatis-plus
+
+
 
 ## 了解Sharding-JDBC的数据分片策略
 
