@@ -27,7 +27,7 @@ public class SnoWalkerComplexShardingTB implements ComplexKeysShardingAlgorithm 
 
     @Override
     public Collection<String> doSharding(Collection<String> availableTargetNames, Collection<ShardingValue> shardingValues) {
-        log.info("availableTargetNames:" + JSON.toJSONString(availableTargetNames) + ",shardingValues:" + JSON.toJSONString(shardingValues));
+        log.info("TB availableTargetNames:{},shardingValues:{}", JSON.toJSONString(availableTargetNames), JSON.toJSONString(shardingValues));
         //进入通用复杂分片算法-抽象类-表路由：availableTargetNames=["order_info_0000","order_info_0001"],shardingValues=[{"columnName":"user_id","logicTableName":"order_info","values":["UD000000011902261230103345300002"]},{"columnName":"order_id","logicTableName":"order_info","values":["OD020000011902261234512595300002"]}]
         //availableTargetNames:["t_new_order_0000","t_new_order_0001"],
         // shardingValues:[{"columnName":"order_id","logicTableName":"t_new_order","values":["OD010001011903261549424993200011"]},{"columnName":"user_id","logicTableName":"t_new_order","values":["UD030001011903261549424973200007"]}]
@@ -37,13 +37,12 @@ public class SnoWalkerComplexShardingTB implements ComplexKeysShardingAlgorithm 
             ListShardingValue<String> listShardingValue = (ListShardingValue<String>) var;
             List<String> shardingValue = (List<String>) listShardingValue.getValues();
             // shardingValue:["OD010001011903261549424993200011"]
-            log.info("shardingValue:" + JSON.toJSONString(shardingValue));
-
             //根据列名获取索引规则，得到索引值
             String index = getIndex(listShardingValue.getLogicTableName(), listShardingValue.getColumnName(), shardingValue.get(0));
             //循环匹配数据表源
             for (String availableTargetName : availableTargetNames) {
                 if (availableTargetName.endsWith("_" + index)) {
+                    log.info("TB shardingValue:{},availableTargetName:{},index:{}", shardingValue, availableTargetName, index);
                     collection.add(availableTargetName);
                     break;
                 }

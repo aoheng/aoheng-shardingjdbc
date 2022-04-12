@@ -32,41 +32,32 @@ public class SnoWalkerComplexShardingDB implements ComplexKeysShardingAlgorithm 
      */
     @Override
     public Collection<String> doSharding(Collection<String> availableTargetNames, Collection<ShardingValue> shardingValues) {
-        System.out.println("availableTargetNames:" + JSON.toJSONString(availableTargetNames) + ",shardingValues:" + JSON.toJSONString(shardingValues));
-        log.info("availableTargetNames:" + JSON.toJSONString(availableTargetNames) + ",shardingValues:" + JSON.toJSONString(shardingValues));
+        log.info("DB availableTargetNames:{},DB shardingValues:{}", JSON.toJSONString(availableTargetNames), JSON.toJSONString(shardingValues));
         //进入通用复杂分片算法-抽象类-数据库路由：availableTargetNames=["ds0","ds1","ds2","ds3"],
         //shardingValues=[{"columnName":"user_id","logicTableName":"order_info","values":["UD000000011902261230103345300002"]},
         // {"columnName":"order_id","logicTableName":"order_info","values":["OD020000011902261234512595300002"]}]
         List<String> shardingResults = new ArrayList<>();
 
         for (ShardingValue var : shardingValues) {
-
             ListShardingValue<String> listShardingValue = (ListShardingValue<String>) var;
             List<String> shardingValue = (List<String>) listShardingValue.getValues();
-
-            log.info("shardingValue:" + JSON.toJSONString(shardingValue));
-
             //根据列名获取索引规则，得到索引值
-            String index = getIndex(listShardingValue.getLogicTableName(),
-                    listShardingValue.getColumnName(),
-                    shardingValue.get(0));
-
+            String index = getIndex(listShardingValue.getLogicTableName(), listShardingValue.getColumnName(), shardingValue.get(0));
             //循环匹配数据源
-            for (String name : availableTargetNames) {
+            for (String availableTargetName : availableTargetNames) {
                 //获取逻辑数据源索引后缀
-                String nameSuffix = name.substring(ShardingConstant.LOGIC_DB_PREFIX_LENGTH);
+                String nameSuffix = availableTargetName.substring(ShardingConstant.LOGIC_DB_PREFIX_LENGTH);
                 if (nameSuffix.equals(index)) {
-                    shardingResults.add(name);
+                    log.info("DB shardingValue:{},availableTargetName:{},index:{}", shardingValue, availableTargetName, index);
+                    shardingResults.add(availableTargetName);
                     break;
                 }
             }
-
             //匹配到一种路由规则就可以退出
             if (shardingResults.size() > 0) {
                 break;
             }
         }
-
         return shardingResults;
     }
 
