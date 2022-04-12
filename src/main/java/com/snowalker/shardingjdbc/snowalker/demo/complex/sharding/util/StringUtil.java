@@ -126,7 +126,7 @@ public class StringUtil {
     public static long getTbIndexByMod(Object obj, int dbCount, int tbCount) {
         long tbRange = getModValue(obj, tbCount);
         BigDecimal bc = new BigDecimal(tbRange);
-        BigDecimal[] results = bc.divideAndRemainder(new BigDecimal(tbCount));
+        BigDecimal[] results = bc.divideAndRemainder(new BigDecimal(tbCount / dbCount));
         return results[1].intValue();
     }
 }
