@@ -1,5 +1,3 @@
-# aoheng-shardingjdbc
-
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/aoheng/aoheng-shardingjdbc/pulls)
@@ -10,7 +8,7 @@
 
 ------
 
-
+# aoheng-shardingjdbc
 
 - 参考snowalker-shardingjdbc分库分表实战
 
@@ -19,8 +17,6 @@
 - 分片策略：复合分片策略-ComplexKeysShardingAlgorithm
 
 - 整合mybatis-plus
-
-
 
 ## 了解Sharding-JDBC的数据分片策略
 
