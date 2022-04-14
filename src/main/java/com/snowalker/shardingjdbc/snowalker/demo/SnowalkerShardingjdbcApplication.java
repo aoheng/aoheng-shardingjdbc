@@ -10,10 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         "com.snowalker.shardingjdbc.snowalker.demo.complex.sharding.mapper"}
 )
 @EnableEncryptableProperties
-public class SnowalkerShardingjdbcDemoApplication {
+public class SnowalkerShardingjdbcApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SnowalkerShardingjdbcDemoApplication.class, args);
+        SpringApplication.run(SnowalkerShardingjdbcApplication.class, args);
     }
 
 }
